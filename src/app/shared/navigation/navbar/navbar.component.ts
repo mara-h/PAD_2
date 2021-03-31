@@ -12,5 +12,4 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
   isLoggedIn = false; // asta e mereu fals deocamdata
-
 }
