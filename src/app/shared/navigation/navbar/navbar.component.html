@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+<mat-toolbar-row>
+    <div class="col‑xs‑12">
+        <div id = "navigation" *ngIf = "isLoggedIn == false">
+            <ul class="nav nav‑pills">
+            <li routerLinkActive="active"> <a [routerLink]="['/login']" >Login</a></li>
+            <li routerLinkActive="active"> <a [routerLink]="['/register']" >Register</a></li>
+            </ul>
+        </div>
+        <div id = "navigation" *ngIf = "isLoggedIn == true">
+            <ul class="nav nav‑pills">
+                <li routerLinkActive="active"> <a [routerLink]="['/home']" >Home</a></li>
+                <li routerLinkActive="active"> <a [routerLink]="['/lessons']" >Lessons</a></li>
+                <li routerLinkActive="active"> <a [routerLink]="['/chat']" >Chat</a></li>
+                <li routerLinkActive="active"> <a [routerLink]="['/quiz']" >Quiz</a></li>
+            </ul>
+        </div>
+    </div>
+</mat-toolbar-row>
+</mat-toolbar>
+    
