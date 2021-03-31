@@ -12,6 +12,7 @@ import { ChatComponent } from './chat/chat.component';
 import { QuizComponent } from './quiz/quiz.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

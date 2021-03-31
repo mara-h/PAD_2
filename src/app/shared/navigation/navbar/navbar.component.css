@@ -1,3 +1,8 @@
-.spacer {
-    flex: 1 1 auto;
-  }
+
+div ul{
+    list-style: none;
+}
+div li{
+    display: inline-block;
+    margin-left: 40px;
+}
