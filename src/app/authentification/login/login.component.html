@@ -16,7 +16,10 @@
             <input matInput placeholder="Password">
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button color="" class="btn-block">Log in</button>
+        <button mat-stroked-button type="submit" class="btn-block">Log in</button>
+        <div class="form-group form-check" *ngIf="serverErrorMessages">
+          {{ serverErrorMessages }}
+        </div>
       </form>
       <li routerLinkActive="active"> <a [routerLink]="['/register']" >Don't have an account yet? Click here to sign up!</a></li>
       <li routerLinkActive="active"> <a [routerLink]="['/']" >Forgotten your password?</a></li>

@@ -10,10 +10,10 @@
         </div>
         <div id = "navigation" *ngIf = "isLoggedIn == true">
             <ul class="nav nav‑pills">
-                <li routerLinkActive="active"> <a mat-raised-button color="warn" mouseover ="color = 'warn'" [routerLink]="['/home']" >Home</a></li>
-                <li routerLinkActive="active"> <a mat-raised-button color="warn" mouseover ="color = 'warn'" [routerLink]="['/lessons']" >Lessons</a></li>
-                <li routerLinkActive="active"> <a mat-raised-button color="warn" mouseover ="color = 'warn'" [routerLink]="['/chat']" >Chat</a></li>
-                <li routerLinkActive="active"> <a mat-raised-button color="warn" mouseover ="color = 'warn'" [routerLink]="['/quiz']" >Quiz</a></li>
+                <li routerLinkActive="active"> <a mat-raised-button color="warn" [routerLink]="['/home']" >Home</a></li>
+                <li routerLinkActive="active"> <a mat-raised-button color="warn" [routerLink]="['/lessons']" >Lessons</a></li>
+                <li routerLinkActive="active"> <a mat-raised-button color="warn" [routerLink]="['/chat']" >Chat</a></li>
+                <li routerLinkActive="active"> <a mat-raised-button color="warn" [routerLink]="['/quiz']" >Quiz</a></li>
             </ul>
         </div>
     </div>

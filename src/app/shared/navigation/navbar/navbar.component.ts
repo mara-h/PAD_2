@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthentifService } from '../../service/authentif/authentif.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isLoggedIn: any;
+  username: any;
+  id: any;
+  constructor(private router: Router, private authentifService: AuthentifService) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.authentifService.isLoggedIn();
+    if (this.isLoggedIn) {
+      this.id = this.authentifService.getID();
+        this.username = this.authentifService.getUsername();
+        console.log(
+          'Logged: ' +
+            this.isLoggedIn +
+            '\nUsername: ' +
+            this.username 
+        );
+    }
   }
-  isLoggedIn = false; // asta e mereu fals deocamdata
 }
