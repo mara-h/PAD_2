@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
-const mongoString = "mongodb+srv://mara:mara@clusterpad.5xuuw.mongodb.net/clientsDatabase?retryWrites=true&w=majority"
+const mongoString = "mongodb+srv://mara:mara@clusterpad.5xuuw.mongodb.net/language_app?retryWrites=true&w=majority"
 
-mongoose.connect(mongoString, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true})
+const db = mongoose.connect(mongoString, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true})
 .then(() => console.log('DB Connected!'))
 .catch(err => {
 console.log(`DB Connection Error: ${err}`);
@@ -16,3 +16,6 @@ mongoose.connection.on("open", function() {
   console.log("Connected to MongoDB database.")
 })
 
+// dincolo e ceva db initialize; cred ca ne trebuie si noua
+
+module.exports = db; // e nevoie ca sa putem fol baza de date in alte module
