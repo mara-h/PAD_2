@@ -6,30 +6,31 @@
         <mat-card-subtitle>to open up a path to learning!</mat-card-subtitle>
       </mat-card-header>
   
-      <form class="form">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-card-content>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Username">
-            <mat-error>This field cannot be empty</mat-error>
+            <input matInput required ngModel type="text" #username="ngModel" name="username" id="registerUsername" class="form-control" placeholder="Username">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Email">
+            <input matInput required ngModel type="email" #email="ngModel" name="email" id="registerEmail" class="form-control" placeholder="Email">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Password">
+            <input matInput required ngModel type="password" #password="ngModel" name="password" id="registerPassword" class="form-control" placeholder="Password">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Re-enter password">
+            <input matInput required ngModel type="password" #password="ngModel" name="repassword" id="registerRePassword" class="form-control" placeholder="Re-enter password">
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button type='submit' class="btn-block">Register</button>
-        <div class="form form-check" *ngIf="showSuccessMessage">
+        <mat-card-actions>
+          <button mat-stroked-button type='submit' [disabled]="f.invalid" class="btn-block">Register</button>
+        </mat-card-actions>
+        <mat-error class="form-check" *ngIf="showSuccessMessage">
           Account successfully created!
-        </div>
-        <div class="form form-check" *ngIf="serverErrorMessages">
+        </mat-error>
+        <div class="form-check" *ngIf="serverErrorMessages">
           {{ serverErrorMessages }}
         </div>
       </form>
-      <li routerLinkActive="active"> <a [routerLink]="['/register']" >Already have an account? Click here to login!</a></li>
+      <li routerLinkActive="active"> <a [routerLink]="['/login']" >Already have an account? Click here to login!</a></li>
     </mat-card>
   </div>

@@ -9,13 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  serverErrorMessages!: string;
-  
+  serverErrorMessages='  ';
+  model = {
+    username: '',
+    password: '',
+  };
 
   constructor(private router: Router, private authentifService: AuthentifService) {}
 
   ngOnInit(): void {
     if (this.authentifService.isLoggedIn()) this.router.navigateByUrl('/');
+    console.log('initializare ceva ')
   }
 
   onSubmit(f: NgForm) {
@@ -29,5 +33,6 @@ export class LoginComponent implements OnInit {
         this.serverErrorMessages = 'Incorrect username or password!';
       }
     );
+    //console.log('buton login apasat');
   }
 }

@@ -6,20 +6,20 @@
         <mat-card-subtitle>and continue on your journey to enlightment!</mat-card-subtitle>
       </mat-card-header>
   
-      <form class="form">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-card-content>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Username">
+            <input matInput required ngModel type="text" #username="ngModel" name="username" id="loginUsername" class="form-control" placeholder="Username">
           </mat-form-field>
   
           <mat-form-field class="full-width">
-            <input matInput placeholder="Password">
+            <input matInput required ngModel type="password" #username="ngModel" name="password" id="loginPassword" class="form-control" placeholder="Password">
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button type="submit" class="btn-block">Log in</button>
-        <div class="form-group form-check" *ngIf="serverErrorMessages">
+        <button mat-stroked-button type="submit" [disabled]="f.invalid" class="btn-block">Log in</button>
+        <mat-error class="error" *ngIf="serverErrorMessages">
           {{ serverErrorMessages }}
-        </div>
+        </mat-error>
       </form>
       <li routerLinkActive="active"> <a [routerLink]="['/register']" >Don't have an account yet? Click here to sign up!</a></li>
       <li routerLinkActive="active"> <a [routerLink]="['/']" >Forgotten your password?</a></li>

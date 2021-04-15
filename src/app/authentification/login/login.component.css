@@ -31,7 +31,6 @@ body {
 
 .box {
   position: relative;
-  top: 45px;
   opacity: 1;
   float: left;
   padding: 60px 50px 40px 50px;
@@ -78,6 +77,9 @@ body {
 .login-wrapper .full-width,
 .login-wrapper .btn-block {
   width: 100%;
+}
+.error{
+  text-align: center;
 }
 
 .login-wrapper mat-card-header {

@@ -6,3 +6,6 @@ div li{
     display: inline-block;
     margin-left: 40px;
 }
+.toolbar{
+    position: fixed;
+}
