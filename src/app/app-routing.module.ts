@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'chat',
     component: ChatComponent,
-    canActivate: [AuthentifGuardGuard]
+    //canActivate: [AuthentifGuardGuard] nu merge pagina daca nu comentam asta
   },
   {
     path: 'lessons',
