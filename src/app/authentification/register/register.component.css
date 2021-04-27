@@ -120,3 +120,11 @@ li a{
 li a:hover{
     color: rgb(64, 25, 236);
 }
+
+.form_check{
+  text-align: center;
+}
+
+.error{
+  text-align: center;
+}

@@ -6,11 +6,14 @@ import { RegisterComponent} from './authentification/register/register.component
 import { QuizComponent } from './quiz/quiz.component';
 import { ChatComponent } from './chat/chat.component';
 import { LessonComponent } from './lesson/lesson.component';
+import { AuthentifGuardGuard } from './authentification/authentif-guard.guard';
+import { ChangePasswordComponent } from './authentification/change-password/change-password/change-password.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent, 
+    canActivate: [AuthentifGuardGuard]
   },
   {
     path: 'login',
@@ -22,16 +25,29 @@ const routes: Routes = [
   },
   {
     path: 'quiz',
-    component: QuizComponent
+    component: QuizComponent,
+    canActivate: [AuthentifGuardGuard]
   },
   {
     path: 'chat',
-    component: ChatComponent
+    component: ChatComponent,
+    canActivate: [AuthentifGuardGuard]
   },
   {
     path: 'lessons',
-    component: LessonComponent
-  }
+    component: LessonComponent,
+    canActivate: [AuthentifGuardGuard]
+  },
+  {
+    path: 'change',
+    component: ChangePasswordComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/', // sau putem sa facem un 404 page daca e 
+    pathMatch: 'full'
+  },
+
 ];
 
 @NgModule({
