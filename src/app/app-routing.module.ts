@@ -7,6 +7,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { ChatComponent } from './chat/chat.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { AuthentifGuardGuard } from './authentification/authentif-guard.guard';
+import { ChangePasswordComponent } from './authentification/change-password/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
     path: 'lessons',
     component: LessonComponent,
     canActivate: [AuthentifGuardGuard]
+  },
+  {
+    path: 'change',
+    component: ChangePasswordComponent
   },
   {
     path: '**',

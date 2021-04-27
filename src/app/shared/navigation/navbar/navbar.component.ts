@@ -15,15 +15,15 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authentifService.isLoggedIn();
+    this.isLoggedIn = this.authentifService.isLoggedIn();// is logged in = true 
     if (this.isLoggedIn) {
-      this.id = this.authentifService.getID();
-        this.username = this.authentifService.getUsername();
+      //this.id = this.authentifService.getID();
+        //this.username = this.authentifService.getUsername();
         console.log(
           'Logged: ' +
             this.isLoggedIn +
-            '\nUsername: ' +
-            this.username 
+            '\nUsername: ' //+
+           // this.username 
         );
     }
   }

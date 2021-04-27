@@ -27,9 +27,9 @@
         <mat-error class="form-check" *ngIf="showSuccessMessage">
           Account successfully created!
         </mat-error>
-        <div class="form-check" *ngIf="serverErrorMessages">
+        <mat-error class="error" *ngIf="serverErrorMessages">
           {{ serverErrorMessages }}
-        </div>
+        </mat-error>
       </form>
       <li routerLinkActive="active"> <a [routerLink]="['/login']" >Already have an account? Click here to login!</a></li>
     </mat-card>
