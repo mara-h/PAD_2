@@ -24,6 +24,9 @@ import { ChangePasswordComponent } from './authentification/change-password/chan
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthentifInterceptor } from './shared/interceptor/authentif.interceptor';
 import { AuthentifGuardGuard} from './authentification/authentif-guard.guard';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { AuthentifGuardGuard} from './authentification/authentif-guard.guard';
     MatCardModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+    MatGridListModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [
     AuthentifService,

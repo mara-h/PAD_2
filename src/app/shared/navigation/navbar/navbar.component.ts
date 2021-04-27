@@ -7,6 +7,8 @@ import { AuthentifService } from '../../service/authentif/authentif.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
+
 export class NavbarComponent implements OnInit {
   isLoggedIn: any;
   username: any;
@@ -27,4 +29,12 @@ export class NavbarComponent implements OnInit {
         );
     }
   }
+
+  onLogout()
+  {
+    this.authentifService.deleteToken();
+    window.location.reload();
+    console.log("Logout button was pressed");
+  }
 }
+
