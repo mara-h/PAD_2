@@ -40,4 +40,4 @@ export class NavbarComponent implements OnInit {
     this.authentifService.deleteInfo();
 
 }
-
+}
