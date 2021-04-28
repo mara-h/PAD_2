@@ -11,16 +11,19 @@ const userSchema = mongoose.Schema({
   },
   email: {
     type: String,
+    unique: true,
     required: true,
     match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
   },
   password: { 
     type: String, 
-    required: true }
+    required: true 
+  },
+  isAdmin: Number
 });
 
 module.exports = mongoose.model("User", userSchema);
-var User = mongoose.model("User", userSchema); //?
+var User = mongoose.model("User", userSchema); 
 
 module.exports.getUserById = function (id, callback){
   User.findById(id, callback);
@@ -46,7 +49,7 @@ module.exports.comparePassword = function (candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     if(err) throw err;
     callback(null, isMatch);
-    console.log("Conmpared psw model")
+    console.log("Compared psw model")
   });
 }
 
