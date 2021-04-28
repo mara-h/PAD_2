@@ -121,7 +121,8 @@ li a:hover{
     color: rgb(64, 25, 236);
 }
 
-.form_check{
+
+mat-error{
   text-align: center;
 }
 

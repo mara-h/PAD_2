@@ -4,7 +4,6 @@ import { AuthentifService} from '../../shared/service/authentif/authentif.servic
 import { Router } from '@angular/router';
 import { HttpClient} from '@angular/common/http'
 import { ignoreElements } from 'rxjs/operators';
-//import { Response } from '@angular/common/http';
 
 
 const token = 'token';
@@ -34,14 +33,25 @@ export class LoginComponent implements OnInit {
   onSubmit(f: NgForm) {
     this.authentifService.login(f.value).subscribe(
       (res) => {
+        console.log(res);
         if(res.hasOwnProperty('token')){
-          console.log(res.hasOwnProperty('token'));
-         //@ts-ignore 
-         console.log(res['token']);
+          //@ts-ignore 
+          this.authentifService.setToken(res['token']);
+          console.log(" has property token");
         }
-        //const token ='';
-         //@ts-ignore 
-        this.authentifService.setToken(res['token']);
+        if(res.hasOwnProperty('isAdmin')){
+          //@ts-ignore
+          this.authentifService.setIsAdmin(res['isAdmin']);
+          console.log(" has property isadmin");
+        }
+        TODO:
+        if(res.hasOwnProperty('username')){ 
+          //@ts-ignore
+          this.authentifService.setUsername(res['username']);
+           //@ts-ignore
+          console.log(" username:" + res['username']);
+        }
+         
         window.location.reload();
         this.router.navigateByUrl('/');
       },
@@ -50,6 +60,5 @@ export class LoginComponent implements OnInit {
         this.serverErrorMessages = 'Incorrect username or password!';
       }
     );
-    //console.log('buton login apasat');
   }
 }
