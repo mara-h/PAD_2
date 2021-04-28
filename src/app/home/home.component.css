@@ -10,18 +10,13 @@ body {
     background: #e2e2e2;
 }
 
-.grid-wrapper {
-    height: 100%;
-}
-
 .grid {
-    position: fixed;
+
     top:60px;
     opacity: 1;
     float: left;
     width: 100%;
-    background: rgb(228, 174, 174);
-    overflow-x: hidden;
+    height: 20cm;
+    background: #f2453d;   
 }
-
 

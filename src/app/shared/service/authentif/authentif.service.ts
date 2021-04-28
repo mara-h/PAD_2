@@ -49,12 +49,27 @@ export class AuthentifService {
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
+  setIsAdmin(isAdmin: string){
+    localStorage.setItem('isAdmin', isAdmin);
+    console.log('set is admin in local storage');
+    console.log(localStorage.getItem('isAdmin'));
+  }
+  setUsername(username: string){
+    console.log("set the username");
+    localStorage.setItem('username', username);
+    console.log(localStorage.getItem('username'));
+  }
   getToken() {
     return localStorage.getItem('token');
   }
+
   
   deleteToken() {
     localStorage.removeItem('token');
+  }
+  deleteInfo(){
+    localStorage.removeItem('username');
+    localStorage.removeItem('isAdmin');
   }
   deleteUser(id: string) {
     this.http.delete(environment.apiBaseUrl + '/user/' + id).subscribe();
@@ -80,16 +95,15 @@ export class AuthentifService {
     console.log('false');
     return false;
   
- 
-    //const token = this.getToken();
-    //const token = JSON.parse(localStorage.getItem('token') || '{}');
-    //console.log('is token expired:');
-   // console.log(helper.isTokenExpired(token));
-    //return this.jwtHelper.isTokenExpired()
-    //return isTokenExpired() ;
-    //return true;
-
   }
+
+
+  isAdmin(){
+    var isAd = localStorage.getItem('isAdmin');
+    console.log("este admin:" + isAd);
+    return isAd;
+  }
+
   getAllUsers() {
     return this.http.get(environment.apiBaseUrl + '/user');
   }
@@ -97,5 +111,12 @@ export class AuthentifService {
   getUserProfileById(id: string) {
     return this.http.get(environment.apiBaseUrl + '/user/' + id);
   }
+
+  getUsername(){
+    var user = localStorage.getItem('username');
+    console.log("get username:" + user);
+    return user;
+  }
+
 
 }
