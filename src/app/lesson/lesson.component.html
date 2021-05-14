@@ -1,1 +1,17 @@
-<p>lesson works!</p>
+<br><br>
+
+<section class="menu" *ngFor ="let rest of lessons;">
+
+  <!-- It's likely you'll need to link the card somewhere. You could add a button in the info, link the titles, or even wrap the entire card in an <a href="..."> -->
+ <div class="row">
+
+  <div class="product-card" >
+    <div class="product-info">
+      <h1>{{rest.name}}</h1>
+      <h6>{{rest.description}}</h6>
+      <button mat-raised-button routerLink="/restaurant/{{rest.id}}">Start lesson </button>
+    </div>
+  </div>
+
+ </div>
+</section>
