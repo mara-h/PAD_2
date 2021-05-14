@@ -11,19 +11,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 router.post('/register', (req, res, next) =>{
-	let newUser = new User({
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password,
-		repassword: req.body.repassword,
-		
-	});
-
-	User.addUser(newUser,(err,user) =>{
-		if(err){
-			res.json({success: false, msg: 'Failed to register user'});
-		}
-	});
+	if(req.body.password === req.body.repassword){
+		let newUser = new User({
+			username: req.body.username,
+			email: req.body.email,
+			password: req.body.password,
+			repassword: req.body.repassword,
+			
+		});
+		User.addUser(newUser,(err,user) =>{
+			if(err){
+				res.json({success: false, msg: 'Username already exists or email is not valid'});
+			}
+			else{
+				res.json({success: true, msg: 'register ok'});
+			}
+		});
+	}
+	else{
+		return res.json({success: false, msg: 'Passwords do not match'});
+	}
 });
 
 router.post('/login', (req, res, next) =>{
@@ -55,24 +62,6 @@ router.post('/login', (req, res, next) =>{
 					username: user.username,
 					isAdmin: user.isAdmin
 				});
-
-				/*res.json({
-					success: true,
-					//token: 'JWT' + token,
-					//user:{
-						id: user._id,
-						username: user.username,
-						email: user.email
-					//}
-					*.
-				});
-				//console.log(token, user.username, user.email);
-
-				/*res.status(200).send({
-					accessToken: token,
-					id: user._id,
-					username: user.username,
-					*/
 			}
 			else {
 				res.status(401);
