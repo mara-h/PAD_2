@@ -21,3 +21,14 @@ body {
     text-align: center;  
 }
 
+h2{
+    color: rgb(99, 76, 81);
+    text-align:center;
+    padding-right: 1cm;
+    padding-left: 1cm;
+    font-style: normal;
+}
+h3{
+    color: rgb(76, 106, 107);
+    text-align: center;
+}

@@ -3,7 +3,6 @@ import { User } from '../../model/user/user.model';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
-//import { JwtService } from where i made it
 import { from } from 'rxjs';
 
 const helper = new JwtHelperService();
@@ -41,11 +40,7 @@ export class AuthentifService {
       
     );
   }
-  //getUsername() {
-   // const payload = this.getUserPayload();
-   // return payload.user.username;
-  //}
- 
+
   setToken(token: string) {
     localStorage.setItem('token', token);
   }

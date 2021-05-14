@@ -21,9 +21,24 @@ export class RegisterComponent implements OnInit {
   onSubmit(f: NgForm) {
     this.authentifService.postUser(f.value).subscribe(
       (res) => {
+        this.serverErrorMessages = '';
+        this.showSuccessMessage = false;
+        if(res.hasOwnProperty('msg')){ 
+          //@ts-ignore
+         console.log(" error mesage:" + res['msg']);
+         //@ts-ignore
+         this.serverErrorMessages = res['msg'];
+       }
+
+       //@ts-ignore
+       if(res.hasOwnProperty('success') && res['success'] === true){
+          //@ts-ignore
+          console.log(" error mesage:" + res['success']);
         this.showSuccessMessage = true;
         f.resetForm();
         this.serverErrorMessages = '';
+       }
+        
       },
       (err) => {
         this.serverErrorMessages = 'Email not valid or user already exists!';

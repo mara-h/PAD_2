@@ -38,6 +38,6 @@ export class NavbarComponent implements OnInit {
   {
     this.authentifService.deleteToken();
     this.authentifService.deleteInfo();
-
+    window.location.reload();
 }
 }
