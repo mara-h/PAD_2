@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const morgan = require("morgan");
 const userRoutes = require("./api/routes/user");
+const lessonRoutes = require('./api/routes/lesson');
+const quizRoutes = require('./api/routes/quiz');
 const db = require("./connection");
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -19,6 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use("/api/user", userRoutes);
+app.use('/api/lesson', lessonRoutes);
+app.use('/api/quiz', quizRoutes);
 
 
 app.get("/", (req, res) => {
