@@ -7,4 +7,50 @@ import { Observable, Subject, from } from 'rxjs';
 export class ChatService {
     private socket = io('http://localhost:8080'); //emits an connection event 
 
+
+    joinRoom(data: any){
+        this.socket.emit('join',data);
+    }
+
+    newUserJoined() {
+        let observable = new Observable<{ user: String; message: String }>(
+          (observer) => {
+            this.socket.on('new user joined', (data) => {
+              observer.next(data);
+            });
+            return () => {
+              this.socket.disconnect(); //if there are errors, the socket is gonna be disconnected.
+            };
+          }
+        );
+        return observable;
+    }
+
+
+    leaveRoom(data: any){
+        this.socket.emit('leave',data);
+      }
+  
+      userLeftRoom() {
+        let observable = new Observable<{ user: String; message: String }>(
+          (observer) => {
+            this.socket.on('left room', (data) => {
+              observer.next(data);
+            });
+            return () => {
+              this.socket.disconnect();
+            };
+          }
+        );
+    
+        return observable;
+      }
+
+      
+
+
+
+
+
+
 }
