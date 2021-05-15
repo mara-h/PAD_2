@@ -5,6 +5,7 @@ import { HomeComponent} from './home/home.component';
 import { LoginComponent} from './authentification/login/login.component';
 import { RegisterComponent} from './authentification/register/register.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { AddQuizComponent } from './add-quiz/add-quiz/add-quiz.component'
 import { ChatComponent } from './chat/chat.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { AuthentifGuardGuard } from './authentification/authentif-guard.guard';
@@ -14,7 +15,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent, 
-    //canActivate: [AuthentifGuardGuard]
+    canActivate: [AuthentifGuardGuard]
   },
   {
     path: 'login',
@@ -46,6 +47,11 @@ const routes: Routes = [
   {
     path: 'addlessons',
     component: AddLessonComponent,
+    canActivate: [AuthentifGuardGuard]
+  },
+  {
+    path: 'addquiz',
+    component: AddQuizComponent,
     canActivate: [AuthentifGuardGuard]
   },
   {

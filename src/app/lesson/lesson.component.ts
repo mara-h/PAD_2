@@ -9,6 +9,8 @@ import {LessonService} from '../shared/service/lesson/lesson.service';
 })
 export class LessonComponent implements OnInit {
 
+  lessonDetails:any;
+  currentUser = '';
   lessonid = 1;
   lesson = 4;
   id=1;
@@ -16,9 +18,8 @@ export class LessonComponent implements OnInit {
   constructor(private lessonService: LessonService ) { }
 
   ngOnInit(): void {
-    this.lessonService.getAll()
-      .subscribe(data => {
-        for (const d of (data as any)) {
+    this.lessonService.getAll().subscribe(res => {
+        /*for (const d of (data as any)) {
           this.lessons.push({
             id: this.id,
             name: d.name,
@@ -29,7 +30,31 @@ export class LessonComponent implements OnInit {
         }
         console.log(this.lessons);
       }, err=>console.log(err)
-      );
-    console.log(this.lessons);
+      );*/
+    //console.log(this.lessons);
+  //}
+console.log("moaaaaaaaaaaaaaarteeeeeeeeeeeeeeeeeee")
+  if(res.hasOwnProperty('count')){
+    //@ts-ignore 
+    var count = res['count'];
+    //@ts-ignore 
+    console.log(res['count']);
+    console.log('\n\n\n merge ceva');
+  }
+  for (var i = 0; i < count; i++) {
+    if(res.hasOwnProperty('_id')){
+      console.log("intra in if");
+
+      //@ts-ignore 
+      this.lessonDetails = res['name'][i];
+      //@ts-ignore 
+      console.log(res['name'][i]);
+    }
+  }
+
+    },
+    (err) => {
+      console.log("eroare lessons:" + err);
+    });
   }
 }

@@ -11,12 +11,12 @@ export class LessonService {
   constructor(private http:HttpClient) { }
 
   getAll(){
-    return this.http.get(environment.apiBaseUrl + '/user/lesson',);
+    return this.http.get(environment.apiBaseUrl+'/lesson/getlessons')
   }
 
   postLesson(lesson: Lesson) {
     return this.http.post(
-      environment.apiBaseUrl + '/user/add-lesson',
+      environment.apiBaseUrl + '/lesson/add-lesson',
       lesson, this.noAuthentifHeader
     );
   }
