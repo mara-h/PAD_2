@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { from } from 'rxjs';
 import {LessonService} from '../shared/service/lesson/lesson.service';
 
@@ -15,7 +16,7 @@ export class LessonComponent implements OnInit {
   lesson = 4;
   id=1;
  public lessons: any= [];
-  constructor(private lessonService: LessonService ) { }
+  constructor(private lessonService: LessonService ,private router:Router) { }
 
   ngOnInit(): void {
     this.lessonService.getAll().subscribe(res => {
@@ -29,6 +30,7 @@ export class LessonComponent implements OnInit {
       this.lessonDetails = res['lesson'][i];
       //console.log(this.lessonDetails['name']);
       this.lessons.push({
+        nb: i,
         id: this.lessonDetails['_id'],
         name: this.lessonDetails["name"],
         description: this.lessonDetails['description'],
@@ -41,5 +43,23 @@ export class LessonComponent implements OnInit {
     (err) => {
       console.log("eroare lessons:" + err);
     });
+  }
+
+  Click(id:string, nb: number) {
+    
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "name": this.lessons[nb]['name'],
+          "content": this.lessons[nb]['content']
+      }
+  };
+  this.router.navigate(["lesson/"+nb], navigationExtras);
+
+    //console.log(nb);
+    //console.log(id);
+    //this.router.navigateByUrl("/lesson/"+nb);
+    //location.reload()
+    //routerLink="/restaurant/{{rest.id}}"
+
   }
 }

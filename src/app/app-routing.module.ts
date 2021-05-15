@@ -11,6 +11,7 @@ import { LessonComponent } from './lesson/lesson.component';
 import { AuthentifGuardGuard } from './authentification/authentif-guard.guard';
 import { IsAdminGuard } from './shared/guard/is-admin.guard';
 import { ChangePasswordComponent } from './authentification/change-password/change-password/change-password.component';
+import { LessonPageComponent } from './lesson-page/lesson-page.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'lessons',
     component: LessonComponent,
+    canActivate: [AuthentifGuardGuard]
+  },
+  {
+    path: 'lesson/:nb',
+    component: LessonPageComponent,
     canActivate: [AuthentifGuardGuard]
   },
   {
