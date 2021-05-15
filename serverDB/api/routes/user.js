@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require('../models/user');
+const Lesson = require('../models/lesson');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../../connection');
@@ -34,6 +35,7 @@ router.post('/register', (req, res, next) =>{
 });
 
 router.post('/login', (req, res, next) =>{
+	console.log("tried at least to find login.")
 	const username = req.body.username;
 	const password = req.body.password;
 	const isAdmin = req.body.isAdmin;
@@ -71,8 +73,55 @@ router.post('/login', (req, res, next) =>{
 	});
 });
 
+router.post('/lessons', (req, res, next) =>{
+	console.log("tried at least to find lesson0.")
+    Lesson.find()
+    .select("_id name description content")
+    .exec()
+    .then((docs) => {
+      const response = {
+        count: docs.length,
+        lesson: docs.map((doc) => {
+          return {
+            _id: doc._id,
+            name: doc.name,
+            content: doc.content,
+            request: {
+              type: "GET",
+              url: "http://localhost:3000/api/lesson/" + doc._id,
+            },
+          };
+        }),
+      };
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
+    });
+});
+
+router.post('/add-lesson', (req, res, next) =>{
+		let newUser = new User({
+			username: req.body.name,
+			email: req.body.description,
+			password: req.body.content,
+			repassword: "req.body.repassword",
+			
+		});
+		User.addUser(newUser,(err,user) =>{
+			if(err){
+				res.json({success: false, msg: 'Username already exists or email is not valid'});
+			}
+			else{
+				res.json({success: true, msg: 'register ok'});
+			}
+		});
+	});
 
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res, next) => {
 	res.json({user: req.user})
 });
+
 module.exports = router;
