@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
-import { QuizService } from '../../shared/service/quiz/quiz.service';
+import { QuizService } from '../shared/service/quiz/quiz.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 

@@ -1,0 +1,26 @@
+
+  button{
+    color: rgb(172, 127, 169);
+    background-color: rgb(213, 242, 255);
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  mat-grid-tile{
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    border-radius: 13px;
+      background-color: rgb(208, 231, 229);
+      color: rgb(150, 78, 150);
+      text-align: center;
+  }
+
+  div{
+      padding-top: 2.5cm;
+      padding-right: 0.5cm;
+      padding-left: 0.5cm;
+      padding-bottom: 00.5cm;
+  }
+  .grid-wrapper{
+    box-shadow: 5;
+  }
+  

@@ -19,36 +19,21 @@ export class LessonComponent implements OnInit {
 
   ngOnInit(): void {
     this.lessonService.getAll().subscribe(res => {
-        /*for (const d of (data as any)) {
-          this.lessons.push({
-            id: this.id,
-            name: d.name,
-            description:d.description,
-            content:d.content,
-          });
-          this.id+=1;
-        }
-        console.log(this.lessons);
-      }, err=>console.log(err)
-      );*/
-    //console.log(this.lessons);
-  //}
-console.log("moaaaaaaaaaaaaaarteeeeeeeeeeeeeeeeeee")
   if(res.hasOwnProperty('count')){
     //@ts-ignore 
     var count = res['count'];
-    //@ts-ignore 
-    console.log(res['count']);
-    console.log('\n\n\n merge ceva');
   }
   for (var i = 0; i < count; i++) {
-    if(res.hasOwnProperty('_id')){
-      console.log("intra in if");
-
+    if(res.hasOwnProperty('lesson')){
       //@ts-ignore 
-      this.lessonDetails = res['name'][i];
-      //@ts-ignore 
-      console.log(res['name'][i]);
+      this.lessonDetails = res['lesson'][i];
+      //console.log(this.lessonDetails['name']);
+      this.lessons.push({
+        id: this.lessonDetails['_id'],
+        name: this.lessonDetails["name"],
+        description: this.lessonDetails['description'],
+        content:this.lessonDetails['content']
+      })
     }
   }
 

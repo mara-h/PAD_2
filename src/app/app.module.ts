@@ -24,11 +24,12 @@ import { ChangePasswordComponent } from './authentification/change-password/chan
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthentifInterceptor } from './shared/interceptor/authentif.interceptor';
 import { AuthentifGuardGuard} from './authentification/authentif-guard.guard';
+import { IsAdminGuard } from './shared/guard/is-admin.guard';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
-import { AddQuizComponent } from './add-quiz/add-quiz/add-quiz.component';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { AddQuizComponent } from './add-quiz/add-quiz/add-quiz.component';
       multi: true
     },
     AuthentifGuardGuard,
+    IsAdminGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -5,10 +5,11 @@ import { HomeComponent} from './home/home.component';
 import { LoginComponent} from './authentification/login/login.component';
 import { RegisterComponent} from './authentification/register/register.component';
 import { QuizComponent } from './quiz/quiz.component';
-import { AddQuizComponent } from './add-quiz/add-quiz/add-quiz.component'
+import { AddQuizComponent } from './add-quiz/add-quiz.component'
 import { ChatComponent } from './chat/chat.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { AuthentifGuardGuard } from './authentification/authentif-guard.guard';
+import { IsAdminGuard } from './shared/guard/is-admin.guard';
 import { ChangePasswordComponent } from './authentification/change-password/change-password/change-password.component';
 
 const routes: Routes = [
@@ -47,16 +48,16 @@ const routes: Routes = [
   {
     path: 'addlessons',
     component: AddLessonComponent,
-    canActivate: [AuthentifGuardGuard]
+    canActivate: [AuthentifGuardGuard, IsAdminGuard]
   },
   {
     path: 'addquiz',
     component: AddQuizComponent,
-    canActivate: [AuthentifGuardGuard]
+    canActivate: [AuthentifGuardGuard, IsAdminGuard]
   },
   {
     path: '**',
-    redirectTo: '/', // sau putem sa facem un 404 page daca e 
+    redirectTo: '/',
     pathMatch: 'full'
   },
 
