@@ -11,15 +11,18 @@ import { AuthentifService } from '../shared/service/authentif/authentif.service'
 export class ChatComponent implements OnInit {
   user:string | null; 
   room:String | undefined;
+  messageText:String;
   messageArray: Array<{ user: String; message: String }> = [];
 
   constructor(private _chatService:ChatService, public _authentif:AuthentifService) {
     this.user=_authentif.getUsername();
     this.room='Chat Room';
+    this.messageText = '';
     this.join();
 
     this._chatService.newUserJoined().subscribe((data) => this.messageArray.push(data));
     this._chatService.userLeftRoom().subscribe((data) => this.messageArray.push(data));
+    this._chatService.newMessageReceived().subscribe((data) => this.messageArray.push(data));
    }
 
   join(){
@@ -28,6 +31,12 @@ export class ChatComponent implements OnInit {
 
   leave(){
     this._chatService.leaveRoom({user:this.user, room:this.room});
+  }
+
+  sendMessage() { 
+    this._chatService.sendMessage({user: this.user, room: this.room, message: this.messageText,
+    });
+    this.messageText = ''; 
   }
 
   ngOnInit(): void {
