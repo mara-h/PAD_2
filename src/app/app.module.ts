@@ -27,6 +27,7 @@ import { AuthentifGuardGuard} from './authentification/authentif-guard.guard';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { AddLessonComponent } from './add-lesson/add-lesson.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatIconModule} from '@angular/material/icon';
     LessonComponent,
     ChatComponent,
     QuizComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AddLessonComponent
   ],
   imports: [
     BrowserModule,

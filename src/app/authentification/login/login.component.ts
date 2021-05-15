@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
           this.authentifService.setIsAdmin(res['isAdmin']);
           console.log(" has property isadmin");
         }
-        TODO:
         if(res.hasOwnProperty('username')){ 
           //@ts-ignore
           this.authentifService.setUsername(res['username']);

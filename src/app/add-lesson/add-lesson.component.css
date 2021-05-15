@@ -1,0 +1,30 @@
+.full-width{
+    width: 100%;
+    padding-top: 1cm;
+}
+mat-card-header{
+    color: crimson;
+}
+.box{
+    padding-top: 3cm;
+}
+
+mat-error{
+    text-align: center;
+  }
+  
+  .error{
+    text-align: center;
+  }
+
+  .btn-block{
+      float: right;
+  }
+
+  mat-card-actions{
+      padding-right: 4cm;
+  }
+
+  .box{
+      box-shadow: none;
+  }

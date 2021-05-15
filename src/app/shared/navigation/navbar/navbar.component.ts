@@ -10,6 +10,7 @@ import { AuthentifService } from '../../service/authentif/authentif.service';
 
 
 export class NavbarComponent implements OnInit {
+  current_user = ' ';
   isLoggedIn: any;
   username: any;
   id: any;
@@ -19,12 +20,15 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     this.isAdmin = this.authentifService.isAdmin();
     console.log(this.isAdmin);
     this.isLoggedIn = this.authentifService.isLoggedIn();// is logged in = true 
     if (this.isLoggedIn) {
+
       //this.id = this.authentifService.getID();
         this.username = this.authentifService.getUsername();
+        this.current_user = this.username + ': ';
         console.log(
           'Logged: ' +
             this.isLoggedIn +
@@ -38,6 +42,6 @@ export class NavbarComponent implements OnInit {
   {
     this.authentifService.deleteToken();
     this.authentifService.deleteInfo();
-
+    window.location.reload();
 }
 }
