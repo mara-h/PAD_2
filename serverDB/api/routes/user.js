@@ -34,6 +34,7 @@ router.post('/register', (req, res, next) =>{
 });
 
 router.post('/login', (req, res, next) =>{
+	console.log("tried at least to find login.")
 	const username = req.body.username;
 	const password = req.body.password;
 	const isAdmin = req.body.isAdmin;
@@ -75,4 +76,5 @@ router.post('/login', (req, res, next) =>{
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res, next) => {
 	res.json({user: req.user})
 });
+
 module.exports = router;
