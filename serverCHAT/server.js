@@ -34,6 +34,17 @@ io.on("connection", function (socket) { //how the server handles a connection ev
     });
   });
 
+  socket.on('leave', function(data){
+
+    console.log(data.user + " has left the room : " + data.room);
+
+    socket.broadcast  //socket.broadcast pentru ca toata lumea inafara de sender sa vada mesajul
+      .to(data.room)
+      .emit("left room", { user: data.user, message: " has left this room." });
+
+    socket.leave(data.room);
+  });
+
  
 
 
