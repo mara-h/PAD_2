@@ -27,6 +27,7 @@ import { AuthentifGuardGuard} from './authentification/authentif-guard.guard';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { ChatService } from './shared/service/webSocket/chat.service';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import {MatIconModule} from '@angular/material/icon';
       multi: true
     },
     AuthentifGuardGuard,
+    ChatService,
   ],
   bootstrap: [AppComponent]
 })
