@@ -14,7 +14,6 @@ router.get('/getlessons', (req, res, next) =>{
     .then((docs) => {
       const response = {
         count: docs.length,
-
         lesson: docs.map((doc) => {
           console.log('jbhj');
           console.log(doc._id);
