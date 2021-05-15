@@ -23,10 +23,23 @@ io.on("connection", function (socket) { //how the server handles a connection ev
 
   console.log('New WS connection..'); 
 
+  socket.on('join', function(data){
+
+    socket.join(data.room)
+    console.log(data.user + " has joined the room : " + data.room);
+   
+    socket.broadcast.to(data.room).emit("new user joined", { //sending the message to everyone except to the one who's sending it
+      user: data.user,
+      message: " has joined this room.",
+    });
+  });
+
+ 
+
+
 });
 
 
 http.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
   });
-  
