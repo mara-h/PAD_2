@@ -19,11 +19,15 @@ export class ChatComponent implements OnInit {
     this.join();
 
     this._chatService.newUserJoined().subscribe((data) => this.messageArray.push(data));
-
+    this._chatService.userLeftRoom().subscribe((data) => this.messageArray.push(data));
    }
 
   join(){
     this._chatService.joinRoom({user:this.user, room:this.room});
+  }
+
+  leave(){
+    this._chatService.leaveRoom({user:this.user, room:this.room});
   }
 
   ngOnInit(): void {
