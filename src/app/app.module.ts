@@ -28,6 +28,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
+import { AddQuizComponent } from './add-quiz/add-quiz/add-quiz.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddLessonComponent } from './add-lesson/add-lesson.component';
     ChatComponent,
     QuizComponent,
     ChangePasswordComponent,
-    AddLessonComponent
+    AddLessonComponent,
+    AddQuizComponent
   ],
   imports: [
     BrowserModule,

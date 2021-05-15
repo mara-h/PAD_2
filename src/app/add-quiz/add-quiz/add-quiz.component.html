@@ -1,0 +1,35 @@
+
+    <mat-card class="box">
+        <mat-card-header >
+          <mat-card-title>Add new quiz</mat-card-title>
+        </mat-card-header>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <mat-card-content>
+            <mat-form-field class="full-width">
+                <textarea matInput required ngModel type="question" #question="ngModel" name="question" id="addQuestion" class="form-control" placeholder="Question"></textarea>
+              </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput required ngModel type="right_answear" #right_answear="ngModel" name="right_answear" id="right_answear" class="form-control" placeholder="Right answear">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput required ngModel type="wrong_answear1" #wrong_answear1="ngModel" name="wrong_answear1" id="wrong_answear1" class="form-control" placeholder="Wrong answear">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput required ngModel type="wrong_answear2" #wrong_answear2="ngModel" name="wrong_answear2" id="wrong_answear2" class="form-control" placeholder="Wrong answear">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput required ngModel type="wrong_answear3" #wrong_answear3="ngModel" name="wrong_answear3" id="wrong_answear3" class="form-control" placeholder="Wrong answear">
+            </mat-form-field>
+              
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button type='submit' [disabled]="f.invalid" class="btn-block">Save</button>
+          </mat-card-actions>
+          <mat-error class="form-check" *ngIf="showSuccessMessage">
+            Lesson successfully created!
+          </mat-error>
+          <mat-error class="error" *ngIf="serverErrorMessages">
+            {{ serverErrorMessages }}
+          </mat-error>
+        </form>
+      </mat-card>
