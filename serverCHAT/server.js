@@ -45,6 +45,14 @@ io.on("connection", function (socket) { //how the server handles a connection ev
     socket.leave(data.room);
   });
 
+  socket.on("message", function (data) {
+
+    console.log(data.user + " has mesage ");
+    io.in(data.room).emit("new message", { //io.in ca toata lumea sa vada mesajul, inclusiv cel care trimite
+      user: data.user,
+      message: data.message,
+    });
+  });
  
 
 
