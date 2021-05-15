@@ -103,19 +103,18 @@ router.post('/lessons', (req, res, next) =>{
 });
 
 router.post('/add-lesson', (req, res, next) =>{
-		let newUser = new User({
-			username: req.body.name,
-			email: req.body.description,
-			password: req.body.content,
-			repassword: "req.body.repassword",
+		let newLesson = new Lesson({
+			name: req.body.name,
+			description: req.body.description,
+			content: req.body.content,
 			
 		});
-		User.addUser(newUser,(err,user) =>{
+		Lesson.addLesson(newLesson,(err,user) =>{
 			if(err){
-				res.json({success: false, msg: 'Username already exists or email is not valid'});
+				res.json({success: false, msg: 'Lesson already exists'});
 			}
 			else{
-				res.json({success: true, msg: 'register ok'});
+				res.json({success: true, msg: 'Saved ok'});
 			}
 		});
 	});
