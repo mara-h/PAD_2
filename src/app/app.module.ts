@@ -29,6 +29,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
 import { AddQuizComponent } from './add-quiz/add-quiz/add-quiz.component';
+import { ChatService } from './shared/service/webSocket/chat.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { AddQuizComponent } from './add-quiz/add-quiz/add-quiz.component';
       multi: true
     },
     AuthentifGuardGuard,
+    ChatService,
   ],
   bootstrap: [AppComponent]
 })
