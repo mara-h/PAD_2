@@ -30,12 +30,16 @@ export class LessonComponent implements OnInit {
       //console.log(this.lessonDetails['name']);
       this.lessons.push({
         id: this.lessonDetails['_id'],
-        name: this.lessonDetails["name"],
+        name: this.lessonDetails['name'],
         description: this.lessonDetails['description'],
-        content:this.lessonDetails['content']
+        content:this.lessonDetails['content'],
+        request:this.lessonDetails['request']
       })
     }
   }
+  console.log(this.lessons);
+
+  
 
     },
     (err) => {

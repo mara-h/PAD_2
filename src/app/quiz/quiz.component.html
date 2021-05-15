@@ -1,1 +1,25 @@
-<p>quiz works!</p>
+<h3>
+<section class="menu" *ngFor ="let rest of questions;">
+ <div class="row">
+
+  <div class="product-card" >
+    <div class="product-info">
+      <h1>{{rest.nb}}.{{rest.question}}</h1>
+      <h2>
+      <mat-radio-group aria-label="Select an option" class="select">
+          <mat-radio-button value={{rest.wrong_answear1}}>{{rest.wrong_answear1}}</mat-radio-button>
+          <mat-radio-button value={{rest.wrong_answear2}}>{{rest.wrong_answear2}}</mat-radio-button>
+          <mat-radio-button value={{rest.wrong_answear3}}>{{rest.wrong_answear3}}</mat-radio-button>
+          <mat-radio-button value={{rest.right_answear}}>{{rest.right_answear}}</mat-radio-button>
+      </mat-radio-group>
+      <div>Your favorite season is: {{rasp}}</div>
+    </h2>
+    <hr class="rounded">
+    </div>
+</div>
+ </div>
+</section>
+<mat-card-actions>
+    <button mat-stroked-button type='submit' class="btn">Submit</button>
+</mat-card-actions>
+</h3>
