@@ -6,26 +6,22 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/getlessons', (req, res, next) =>{
-	console.log("tried at least to find lesson0.")
-    Lesson.find()
-    .select("_id name description content")
+router.get('/getquiz', (req, res, next) =>{
+	console.log("tried at least to find quizzes.")
+    Quiz.find()
+    .select("_id question right_answear wrong_answear1 wrong_answear2 wrong_answear3")
     .exec()
     .then((docs) => {
       const response = {
         count: docs.length,
-
-        lesson: docs.map((doc) => {
-          console.log('jbhj');
-          console.log(doc._id);
-          console.log(doc.name);
-          console.log(doc.description);
-          console.log(doc.content);
+        quiz: docs.map((doc) => {
           return {
             _id: doc._id,
-            name: doc.name,
-            description: doc.description,
-            content: doc.content,
+            question: doc.question,
+            right_answear: doc.right_answear,
+            wrong_answear1: doc.wrong_answear1,
+            wrong_answear2: doc.wrong_answear2,
+            wrong_answear3: doc.wrong_answear3,
             request: {
               type: "GET",
               url: "http://localhost:3000/api/quiz/" + doc._id,
@@ -40,7 +36,6 @@ router.get('/getlessons', (req, res, next) =>{
         error: err,
       });
     });
-
 });
 
 
