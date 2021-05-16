@@ -10,7 +10,7 @@
       crossorigin="anonymous"
     />
     <script defer src="http://localhost:8080/socket.io/socket.io.js"></script>
-    
+    <script defer src = "app/chat.service.ts"></script>
     <link rel="stylesheet" href="chat.component.css" />
     
     
@@ -20,17 +20,26 @@
     <div class="chat-container">
       <header class="chat-header" >
         <h1><i class="title" ></i> Welcome!</h1>
-        <a id="leave-btn" class="btn" href="app/home.component.html" >Leave Room</a>
+        <a id="leave-btn" class="btn" href="app/home.component.html" (click)='leave()'>Leave Room</a>
         
 
       </header>
       <main class="chat-main" >
         <div class="chat-sidebar">
        
-          <h3><i class="fas fa-users"></i> Users</h3>
+          
           <ul id="users"></ul>
         </div>
         <div class="chat-messages">
+          <div *ngFor="let item of messageArray">
+            <span *ngIf="item.user != _authentif.getUsername()"
+            ><strong class="blue">{{ item.user }}</strong
+            >: {{ item.message }}</span>
+  
+            <span *ngIf="item.user == _authentif.getUsername()">
+              <strong class="red">{{ item.user }}</strong
+              >: {{ item.message }}</span>
+          </div>
         </div>
       </main>
       <div class="chat-form-container">
@@ -42,16 +51,17 @@
             placeholder="Enter Message..."
             required
             autocomplete="off"
+            (keyup.enter)="sendMessage()"
+            [(ngModel)]="messageText"
             
           />
         </div>
         <div class="chat-btn">
-          <button class="btn1" type="submit" style = "position:relative; left: 65px;right:1px; bottom:25px;"> <i class="fas fa-paper-plane"></i> Send</button> 
+          <button class="btn1" type="submit" style = "position:relative; left: 65px;right:1px; bottom:25px;"(click)='sendMessage()'> <i class="fas fa-paper-plane"></i> Send</button> 
         </div>
       </div>
       </div>
     
-
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
