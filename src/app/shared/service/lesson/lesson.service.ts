@@ -14,6 +14,11 @@ export class LessonService {
     return this.http.get(environment.apiBaseUrl+'/lesson/getlessons')
   }
 
+  deleteLesson(id: string){
+    console.log("tries to delete something");
+    return this.http.delete(environment.apiBaseUrl+'/lesson/deleteonelesson'+ id).subscribe
+  }
+
   postLesson(lesson: Lesson) {
     return this.http.post(
       environment.apiBaseUrl + '/lesson/add-lesson',

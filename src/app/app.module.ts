@@ -30,6 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
+import { LessonPageComponent } from './lesson-page/lesson-page.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { ChatService } from './shared/service/webSocket/chat.service';
 
@@ -46,7 +47,8 @@ import { ChatService } from './shared/service/webSocket/chat.service';
     QuizComponent,
     ChangePasswordComponent,
     AddLessonComponent,
-    AddQuizComponent
+    AddQuizComponent,
+    LessonPageComponent
   ],
   imports: [
     BrowserModule,
