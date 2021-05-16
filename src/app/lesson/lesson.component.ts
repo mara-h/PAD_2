@@ -55,11 +55,9 @@ export class LessonComponent implements OnInit {
   };
   this.router.navigate(["lesson/"+nb], navigationExtras);
 
-    //console.log(nb);
-    //console.log(id);
-    //this.router.navigateByUrl("/lesson/"+nb);
-    //location.reload()
-    //routerLink="/restaurant/{{rest.id}}"
+  }
 
+  Click1(id:string, nb: number){
+    this.lessonService.deleteLesson(id);
   }
 }

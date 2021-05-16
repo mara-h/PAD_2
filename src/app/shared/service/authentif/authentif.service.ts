@@ -29,8 +29,6 @@ export class AuthentifService {
       this.noAuthentifHeader
     );
   }
-
-  
   login(authentifCredentials: any) {
 
     return this.http.post(

@@ -12,15 +12,26 @@
       background-color: rgb(208, 231, 229);
       color: rgb(150, 78, 150);
       text-align: center;
+      word-wrap: normal;
   }
 
   div{
       padding-top: 2.5cm;
       padding-right: 0.5cm;
       padding-left: 0.5cm;
+      word-wrap: normal;
       padding-bottom: 00.5cm;
   }
   .grid-wrapper{
     box-shadow: 5;
+    word-wrap: normal;
+  }
+  h3{
+    max-width: 250px;
+    word-wrap: break-word;
+  }
+  h2{
+    max-width: 250px;
+    word-wrap: break-word;
   }
   
