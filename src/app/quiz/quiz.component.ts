@@ -8,11 +8,14 @@ import { QuizService } from '../shared/service/quiz/quiz.service';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
+  a = 's';
   
+  modelGroups = []
   rasp: string = "";
   quizDetails:any;
   currentQuestion = '';
   private val = 0;
+  i=0;
 public questions: any= [];
 public answears: any = [];
 public answears_all: any = [];
@@ -37,13 +40,14 @@ public answears_all: any = [];
         wrong_answear1:this.quizDetails['wrong_answear1'],
         wrong_answear2:this.quizDetails['wrong_answear2'],
         wrong_answear3:this.quizDetails['wrong_answear3'],
+        actual_answear:this.quizDetails['right_answear'],
       })
     }
   }
   this.val = count<10 ? count : 10;
     this.questions = this.quizService.shuffle(this.questions);
     this.questions = this.questions.slice(0,this.val);
-    console.log(this.questions);
+    
 
     for (var i = 0; i < this.val; i++) {
       this.questions[i]['nb'] = i+1;
@@ -64,18 +68,8 @@ public answears_all: any = [];
     });
   }
 
-
-  onSubmit(f: NgForm) {
-    this.quizService.postQuiz(f.value).subscribe(
-      (res) => {
-        console.log("s-a intamplat ceva cu add quiz ");
-        f.resetForm();
-      },
-      (err) => {
-      }
-    );
-  }
-
-
+onClick(){
+  window.location.reload();
+}
 }
 

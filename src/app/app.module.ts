@@ -33,6 +33,7 @@ import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { LessonPageComponent } from './lesson-page/lesson-page.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { ChatService } from './shared/service/webSocket/chat.service';
+import { QuestionComponent } from './question/question.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ChatService } from './shared/service/webSocket/chat.service';
     ChangePasswordComponent,
     AddLessonComponent,
     AddQuizComponent,
-    LessonPageComponent
+    LessonPageComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<div class="product-card" >
+    <div class="product-info">
+      <h1>{{item.nb}}.{{item.question}}</h1>
+      <h2>
+      <mat-radio-group aria-label="Select an option"  class="select" [(ngModel)]="afisare">
+          <mat-radio-button value={{item.right_answear}} input type='submit'  [disabled]="alreadyAnswered" (click)="setradio(item.right_answear)" >{{item.right_answear}}</mat-radio-button >
+          <mat-radio-button value={{item.wrong_answear1}} input type='submit' [disabled]="alreadyAnswered" (click)="setradio(item.wrong_answear1)">{{item.wrong_answear1}}</mat-radio-button>
+          <mat-radio-button value={{item.wrong_answear2}} input type='submit' [disabled]="alreadyAnswered" (click)="setradio(item.wrong_answear2)">{{item.wrong_answear2}}</mat-radio-button>
+          <mat-radio-button value={{item.wrong_answear3}} input type='submit' [disabled]="alreadyAnswered" (click)="setradio(item.wrong_answear3)">{{item.wrong_answear3}}</mat-radio-button>
+      </mat-radio-group  >
+      <div> {{afisare1}}{{correct}}</div>
+    </h2>
+    <hr class="rounded">
+    </div>
+</div>
