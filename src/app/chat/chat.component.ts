@@ -1,13 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import {ChatService} from '../../app/shared/service/webSocket/chat.service';
+import { AuthentifService } from '../shared/service/authentif/authentif.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+  providers:[ChatService]
 })
 export class ChatComponent implements OnInit {
+  user:string | null; 
+  room:String | undefined;
+  messageText:String;
+  messageArray: Array<{ user: String; message: String }> = [];
 
-  constructor() { }
+  constructor(private _chatService:ChatService, public _authentif:AuthentifService) {
+    this.user=_authentif.getUsername();
+    this.room='Chat Room';
+    this.messageText = '';
+    this.join();
+
+    this._chatService.newUserJoined().subscribe((data) => this.messageArray.push(data));
+    this._chatService.userLeftRoom().subscribe((data) => this.messageArray.push(data));
+    this._chatService.newMessageReceived().subscribe((data) => this.messageArray.push(data));
+   }
+
+  join(){
+    this._chatService.joinRoom({user:this.user, room:this.room});
+  }
+
+  leave(){
+    this._chatService.leaveRoom({user:this.user, room:this.room});
+  }
+
+  sendMessage() { 
+    this._chatService.sendMessage({user: this.user, room: this.room, message: this.messageText,
+    });
+    this.messageText = ''; 
+  }
 
   ngOnInit(): void {
   }
