@@ -7,7 +7,7 @@
         <h2>{{rest.name}}
           <h3>{{rest.description}}</h3>
           <button mat-raised-button (click)="Click(rest.id, rest.nb)">Start lesson </button> 
-          <button mat-raised-button (click)="Click1(rest.id, rest.nb)">Delete lesson </button> 
+          <button mat-raised-button [hidden]="isNotAdmin" (click)="Click1(rest.id, rest.nb)">Delete lesson </button> 
         </h2>
        
       </mat-grid-tile>
