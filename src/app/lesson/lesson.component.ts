@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { from } from 'rxjs';
+import { AuthentifService } from '../shared/service/authentif/authentif.service';
 import {LessonService} from '../shared/service/lesson/lesson.service';
 
 @Component({
@@ -9,16 +10,23 @@ import {LessonService} from '../shared/service/lesson/lesson.service';
   styleUrls: ['./lesson.component.css']
 })
 export class LessonComponent implements OnInit {
-
+  isNotAdmin = false;
   lessonDetails:any;
   currentUser = '';
   lessonid = 1;
   lesson = 4;
   id=1;
  public lessons: any= [];
-  constructor(private lessonService: LessonService ,private router:Router) { }
+  constructor(private lessonService: LessonService ,private router:Router, auth: AuthentifService) {
+    if(auth.isAdmin() === null){
+      this.isNotAdmin = true;
+    }
+    console.log(this.isNotAdmin + ' constructor')
+  }
+  
 
   ngOnInit(): void {
+    console.log(this.isNotAdmin + ' init')
     this.lessonService.getAll().subscribe(res => {
   if(res.hasOwnProperty('count')){
     //@ts-ignore 
@@ -63,5 +71,6 @@ export class LessonComponent implements OnInit {
 
   Click1(id:string, nb: number){
     this.lessonService.deleteLesson(id);
+    window.location.reload();
   }
 }

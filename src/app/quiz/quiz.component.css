@@ -1,9 +1,4 @@
-h1{
-    font-size: 20px;
-    text-align: left;
-    padding-left: 1cm;
-    padding-right: 1cm;
-}
+
 .btn{
     align-content: center;
     float: right;
@@ -16,26 +11,8 @@ button{
     padding-left: 0.7cm;
     padding-right: 0.7cm;
 }
-
-.product-info{
-    padding-bottom: 1cm;
-}
-
-h2{
-    font-size: 13px;
-    padding-inline: 2cm;
-}
-mat-radio-button{
-    padding-right: 3cm;
-}
-
 h3{
     padding-top: 2.5cm;
     padding-bottom: 2cm;
 }
-hr{
-    margin-inline: 0.5cm;
-    border: 4px solid rgb(228, 224, 224);
-    border-radius: 5px;
-    box-shadow: none;
-}
+
