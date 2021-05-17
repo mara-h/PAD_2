@@ -1,5 +1,6 @@
 const Lesson = require('../models/lesson');
 const express = require("express");
+var mongoose = require("mongoose");
 const router = express.Router();
 const app = express();
 var bodyParser = require('body-parser');
@@ -41,6 +42,31 @@ router.get('/getlessons', (req, res, next) =>{
     });
 
 });
+
+router.delete("/:lessonId", (req, res, next) =>{
+  console.log("tries to delete something")
+  const id = req.params.lessonId;
+  var objectId = mongoose.Types.ObjectId;
+  if (objectId.isValid(new objectId(id))) {
+    Lesson.deleteOne({_id: id })
+    .exec()
+    .then((result) => {
+        res.status(200).json({
+          message: "Successfully deleted by id",
+          request: {
+            type: "GET",
+            url: "http://localhost:3000/user",
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  } else {
+    console.log("You passed a lesson");
+  }
+})
 
 
 router.post('/add-lesson', (req, res, next) =>{
