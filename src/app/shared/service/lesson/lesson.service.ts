@@ -16,8 +16,9 @@ export class LessonService {
 
   deleteLesson(id: string){
     console.log("tries to delete something");
-    return this.http.delete(environment.apiBaseUrl+'/lesson/deleteonelesson'+ id).subscribe
-  }
+    return this.http.delete(environment.apiBaseUrl+'/lesson/'+ id).subscribe((data)=>{ 
+      console.log(data)}
+      )}
 
   postLesson(lesson: Lesson) {
     return this.http.post(

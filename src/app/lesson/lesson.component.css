@@ -4,6 +4,8 @@
     background-color: rgb(213, 242, 255);
     box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  button[hidden] { display: none; }
+
 
   mat-grid-tile{
     box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
